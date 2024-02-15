@@ -1,18 +1,7 @@
-import axios from 'axios';
+import Guest from '../Guest/Guest';
 
 function GuestList(props) {
-    const deleteGuest = (id) => {
-        // console.log('Delete guest with id', id);
-        axios({
-            method: 'DELETE',
-            url: `/api/guests/${id}`
-        }).then(response => {
-            props.getGuests();
-        }
-        ).catch(error => {
-            console.log('Error deleting guest', error);
-        });
-    }
+
 
     return (
         <>
@@ -27,11 +16,7 @@ function GuestList(props) {
                 </thead>
                 <tbody>
                     {props.guestList.map(guest => (
-                        <tr key={guest.id}>
-                            <td>{guest.name}</td>
-                            <td>{String(guest.kidsMeal)}</td>
-                            <td><button onClick={() => {deleteGuest(guest.id)}}>Delete</button></td>
-                        </tr>
+                        <Guest key={guest.id} guest={guest} getGuests={props.getGuests}/>
                     ))}
                 </tbody>
             </table>
