@@ -37,5 +37,17 @@ router.post('/', (req, res) => {
         })
 })
 
+// add a DELETE route
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    const sqlText = `DELETE FROM "guests" WHERE "id" = $1`;
+    pool.query(sqlText, [id]).then(result => {
+        res.sendStatus(204);
+    }).catch(error => {
+        console.log(`Error deleting item with sqlText ${sqlText}`, error);
+        res.sendStatus(500);
+    });
+});
+
 
 module.exports = router;
