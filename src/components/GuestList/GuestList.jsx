@@ -1,4 +1,8 @@
 function GuestList(props) {
+    const deleteGuest = (id) => {
+        console.log('Delete guest with id', id);
+    }
+
     return (
         <>
             <h2>Guest List</h2>
@@ -7,6 +11,7 @@ function GuestList(props) {
                     <tr>
                         <th>Name</th>
                         <th>Kid's Meal</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -14,6 +19,7 @@ function GuestList(props) {
                         <tr key={guest.id}>
                             <td>{guest.name}</td>
                             <td>{String(guest.kidsMeal)}</td>
+                            <td><button onClick={() => {deleteGuest(guest.id)}}>Delete</button></td>
                         </tr>
                     ))}
                 </tbody>

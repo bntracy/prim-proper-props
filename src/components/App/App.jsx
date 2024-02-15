@@ -36,7 +36,7 @@ function App() {
       <GuestForm
         getGuests={getGuests}
       />
-      <GuestList guestList={guestList} />
+      <GuestList guestList={guestList} getGuests={getGuests} />
       <DinnerSupplies guestList={guestList} />
       <Footer />
     </div>
