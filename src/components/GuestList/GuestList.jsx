@@ -1,6 +1,17 @@
+import axios from 'axios';
+
 function GuestList(props) {
     const deleteGuest = (id) => {
-        console.log('Delete guest with id', id);
+        // console.log('Delete guest with id', id);
+        axios({
+            method: 'DELETE',
+            url: `/api/guests/${id}`
+        }).then(response => {
+            props.getGuests();
+        }
+        ).catch(error => {
+            console.log('Error deleting guest', error);
+        });
     }
 
     return (
