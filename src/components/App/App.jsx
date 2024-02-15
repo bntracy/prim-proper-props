@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import Header from '../Header/Header';
+import PartyLeader from '../PartyLeader/PartyLeader';
 import GuestForm from '../GuestForm/GuestForm';
 import GuestList from '../GuestList/GuestList';
 import DinnerSupplies from '../DinnerSupplies/DinnerSupplies';
@@ -31,8 +32,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <h2>Party Leader</h2>
-      {guestList[0] && <h3>{guestList[0].name}</h3>}
+      <PartyLeader leader={guestList[0]} />
       <GuestForm
         getGuests={getGuests}
       />
